@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/violet_soft_bg">
+
+    <!-- Top Action Bar Header -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:cardBackgroundColor="@color/violet_primary"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Retrieval System Lab"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="FAISS • Sentence Transformers • PDF RAG"
+                    android:textColor="#E1D5E7"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Health Status Badge -->
+            <TextView
+                android:id="@+id/tv_health_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@color/success_green_bg"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/success_green"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                tools:text="Online • 0 Chunks" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Main Content Area -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/card_header"
+        android:fillViewport="true"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 1. HOME CARD (Upload PDF) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/violet_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:contentDescription="Upload PDF"
+                        android:src="@android:drawable/ic_menu_upload"
+                        app:tint="@color/violet_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Upload PDF Document"
+                        android:textColor="@color/violet_text_dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:lineSpacingExtra="3dp"
+                        android:text="Select a PDF file. The FastAPI backend will extract text, generate 384-dim vector embeddings with Sentence Transformers, and build a persistent FAISS index."
+                        android:textColor="@color/violet_text_secondary"
+                        android:textSize="13sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_upload_pdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="24dp"
+                        android:text="Choose PDF File"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@color/violet_primary"
+                        app:cornerRadius="14dp"
+                        app:icon="@android:drawable/ic_menu_add"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp"
+                        app:iconTint="@color/white" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. PROCESSING CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_processing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/violet_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="32dp">
+
+                    <ProgressBar
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:indeterminateTint="@color/violet_primary" />
+
+                    <TextView
+                        android:id="@+id/tv_processing_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Processing PDF Document..."
+                        android:textColor="@color/violet_text_dark"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_processing_sub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Extracting pages, chunking text into 500-character windows, and computing FAISS vector embeddings..."
+                        android:textColor="@color/violet_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. UPLOAD SUCCESS CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_upload_success"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/violet_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:contentDescription="Success"
+                        android:src="@android:drawable/checkbox_on_background"
+                        app:tint="@color/success_green" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Document Indexed Successfully!"
+                        android:textColor="@color/violet_text_dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_success_filename"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/violet_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="Filename: sample.pdf" />
+
+                    <!-- Stats grid -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/violet_highlight"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_stat_pages"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/violet_primary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                tools:text="5" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pages"
+                                android:textColor="@color/violet_text_secondary"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/violet_stroke" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_stat_chunks"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/violet_primary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                tools:text="18" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="New Chunks"
+                                android:textColor="@color/violet_text_secondary"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/violet_stroke" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_stat_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/violet_primary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                tools:text="42" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total in Store"
+                                android:textColor="@color/violet_text_secondary"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_proceed_to_ask"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Ask Question Now →"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@color/violet_primary"
+                        app:cornerRadius="14dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. ASK QUESTION CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_ask_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/violet_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ask a Question"
+                        android:textColor="@color/violet_text_dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Enter your question to retrieve the top 3 relevant text chunks using FAISS cosine similarity search."
+                        android:textColor="@color/violet_text_secondary"
+                        android:textSize="13sp" />
+
+                    <!-- Question Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_question"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Type your question..."
+                        app:boxStrokeColor="@color/violet_primary"
+                        app:boxStrokeWidth="1.5dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_question"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:maxLines="4"
+                            android:minLines="2"
+                            android:textColor="@color/violet_text_dark"
+                            android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Suggested Questions horizontal scroll chips -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Suggested Questions:"
+                        android:textColor="@color/violet_text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group_samples"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_q1"
+                            style="@style/Widget.Material3.Chip.Suggestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="What is the main topic?"
+                            android:textColor="@color/violet_primary"
+                            app:chipBackgroundColor="@color/violet_highlight"
+                            app:chipStrokeColor="@color/violet_stroke" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_q2"
+                            style="@style/Widget.Material3.Chip.Suggestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Summarize the key findings"
+                            android:textColor="@color/violet_primary"
+                            app:chipBackgroundColor="@color/violet_highlight"
+                            app:chipStrokeColor="@color/violet_stroke" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_q3"
+                            style="@style/Widget.Material3.Chip.Suggestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="What tools or methods are used?"
+                            android:textColor="@color/violet_primary"
+                            app:chipBackgroundColor="@color/violet_highlight"
+                            app:chipStrokeColor="@color/violet_stroke" />
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Retrieve Chunks (Top 3)"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@color/violet_primary"
+                        app:cornerRadius="14dp"
+                        app:icon="@android:drawable/ic_menu_search"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp"
+                        app:iconTint="@color/white" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. SEARCHING CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_searching"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/violet_stroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="32dp">
+
+                    <ProgressBar
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:indeterminateTint="@color/violet_accent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Searching FAISS Index..."
+                        android:textColor="@color/violet_text_dark"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Encoding query vector with Sentence Transformers &amp; retrieving top 3 nearest vectors by cosine similarity..."
+                        android:textColor="@color/violet_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 6. RETRIEVAL RESULTS CARD -->
+            <LinearLayout
+                android:id="@+id/card_results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_results_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Top 3 Retrieved Chunks"
+                        android:textColor="@color/violet_text_dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_query_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_results_title"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/violet_text_secondary"
+                        android:textSize="13sp"
+                        tools:text="Query: 'What is Sentence Transformers?'" />
+                </RelativeLayout>
+
+                <!-- Empty state container if 0 results -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_empty_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No Matching Chunks Found"
+                            android:textColor="@color/violet_text_dark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_empty_msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center"
+                            android:text="Try asking another question or uploading a PDF document."
+                            android:textColor="@color/violet_text_secondary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- RecyclerView for search results -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_search_result" />
+
+                <!-- Action Buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_ask_another"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="52dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:text="Ask Another"
+                        android:textColor="@color/violet_primary"
+                        android:textSize="14sp"
+                        app:cornerRadius="12dp"
+                        app:strokeColor="@color/violet_primary" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_upload_new"
+                        android:layout_width="0dp"
+                        android:layout_height="52dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Upload New PDF"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/violet_primary"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 7. ERROR CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/error_red_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/error_red"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Error Occurred"
+                        android:textColor="@color/error_red"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_error_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/violet_text_dark"
+                        android:textSize="13sp"
+                        tools:text="Failed to connect to backend server at http://10.0.2.2:8000/. Ensure FastAPI server is running." />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_retry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Retry"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/error_red"
+                        app:cornerRadius="10dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

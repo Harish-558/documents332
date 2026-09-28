@@ -1,0 +1,110 @@
+[
+  {
+    "chunk_id": 0,
+    "document": "sample_retrieval_lab_doc.pdf",
+    "page": 1,
+    "text": "Retrieval System Lab: RAG Architecture Overview Retrieval Augmented Generation (RAG) integrates vector search with language models. Text documents are chunked into smaller passages, typically 300 to 500 characters long. Each text chunk is converted into a 384-dimensional vector embedding using all-MiniLM-L6-v2."
+  },
+  {
+    "chunk_id": 1,
+    "document": "sample_retrieval_lab_doc.pdf",
+    "page": 2,
+    "text": "FAISS Index & Vector Search FAISS (Facebook AI Similarity Search) is an open-source vector store designed for fast retrieval. Inner Product (IndexFlatIP) combined with L2 normalized embeddings calculates Cosine Similarity. FAISS stores vector indices persistently on disk alongside chunk metadata for instant search."
+  },
+  {
+    "chunk_id": 2,
+    "document": "sample_retrieval_lab_doc.pdf",
+    "page": 3,
+    "text": "Android Kotlin & FastAPI Integration The Android app uses Retrofit 2 with OkHttp to connect to the FastAPI backend at 10.0.2.2:8000. Android users upload PDF files via multipart/form-data and query the index with top_k = 3. The user interface follows a clean White and Violet Material 3 design system."
+  },
+  {
+    "chunk_id": 3,
+    "document": "sample_retrieval_lab_doc.pdf",
+    "page": 1,
+    "text": "Retrieval System Lab: RAG Architecture Overview Retrieval Augmented Generation (RAG) integrates vector search with language models. Text documents are chunked into smaller passages, typically 300 to 500 characters long. Each text chunk is converted into a 384-dimensional vector embedding using all-MiniLM-L6-v2."
+  },
+  {
+    "chunk_id": 4,
+    "document": "sample_retrieval_lab_doc.pdf",
+    "page": 2,
+    "text": "FAISS Index & Vector Search FAISS (Facebook AI Similarity Search) is an open-source vector store designed for fast retrieval. Inner Product (IndexFlatIP) combined with L2 normalized embeddings calculates Cosine Similarity. FAISS stores vector indices persistently on disk alongside chunk metadata for instant search."
+  },
+  {
+    "chunk_id": 5,
+    "document": "sample_retrieval_lab_doc.pdf",
+    "page": 3,
+    "text": "Android Kotlin & FastAPI Integration The Android app uses Retrofit 2 with OkHttp to connect to the FastAPI backend at 10.0.2.2:8000. Android users upload PDF files via multipart/form-data and query the index with top_k = 3. The user interface follows a clean White and Violet Material 3 design system."
+  },
+  {
+    "chunk_id": 6,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": "YALAGALA NAGA BHUSHANAM Phone: 8125495618 | Email: nagabhushanamyalagala@gmail.com CAREER OBJECTIVE Motivated and enthusiastic B.Tech 3rd-year student seeking an entry-level internship or career opportunity to apply programming, database, and problem-solving skills. Eager to learn new technologies, contribute to real-world projects, and grow as a software professional. EDUCATION Qualification Institution / Board Status / Score B.Tech – Computer Science / Engineering QIS College of Engineering"
+  },
+  {
+    "chunk_id": 7,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": "nstitution / Board Status / Score B.Tech – Computer Science / Engineering QIS College of Engineering and Technology, Ongole 3rd Year Intermediate (12th) Board / Institution 90%+ TECHNICAL SKILLS Programming Languages: C, Java, Python, Ruby, JavaScript Database: SQL Web Technologies: HTML, CSS Core Skills: Problem Solving, Object-Oriented Programming, Basic Data Structures STRENGTHS • Quick learner with a positive attitude • Good problem-solving and logical thinking ability • Interested in"
+  },
+  {
+    "chunk_id": 8,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": "learner with a positive attitude • Good problem-solving and logical thinking ability • Interested in learning new technologies • Teamwork and communication skills AREAS OF INTEREST Software Development, Programming, Database Management, Web Development, and Emerging Technologies. PERSONAL DETAILS College: QIS College of Engineering and Technology Place: Ongole Name: Yalagala Naga Bhushanam Phone: 8125495618 Email: nagabhushanamyalagala@gmail.com Current Education: B.Tech – 3rd Year DECLARATION"
+  },
+  {
+    "chunk_id": 9,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": ": 8125495618 Email: nagabhushanamyalagala@gmail.com Current Education: B.Tech – 3rd Year DECLARATION I hereby declare that the information provided above is true and correct to the best of my knowledge."
+  },
+  {
+    "chunk_id": 10,
+    "document": "aryan resume.pdf",
+    "page": 1,
+    "text": "Aryan Abhinav Vadela 📧 Email: vadelaaryan@gmail.com 📧 Phone: 6303763301 📧 Address: Ongole, Andhra Pradesh Career Objective Motivated and enthusiastic B.Tech 3nd year student with strong interest in frontend development and programming. Seeking opportunities to enhance my technical skills, gain practical experience, and contribute to real-world projects. Educational Qualifications  B.Tech (3rd Year – Pursuing) College: QIS educational institutions,Ongole  Intermediate College: Bhashyam junior"
+  },
+  {
+    "chunk_id": 11,
+    "document": "aryan resume.pdf",
+    "page": 1,
+    "text": "ear – Pursuing) College: QIS educational institutions,Ongole  Intermediate College: Bhashyam junior college,Guntur  SSC (10th Class) School: Gowtham Model School,Ongole Technical Skills  Frontend Technologies HTML CSS Basic JavaScript  Programming Languages Python C Language  Other Skills Basic problem solving Logical thinking Willingness to learn new technologies Creating Personal Identity,Integrity(certified) Projects Mini projects related to frontend development Automated email"
+  },
+  {
+    "chunk_id": 12,
+    "document": "aryan resume.pdf",
+    "page": 1,
+    "text": "Identity,Integrity(certified) Projects Mini projects related to frontend development Automated email Notification bot using automation anywhere and Automating email with using make(like social media content posting) Simple logic calculator using python"
+  },
+  {
+    "chunk_id": 13,
+    "document": "aryan resume.pdf",
+    "page": 2,
+    "text": "Personal Details Father’s Name: Hareesh Babu Location: Ongole Nationality: Indian Languages Known: English, Telugu Declaration I hereby declare that the information given above is true and correct to the best of my knowledge. Place: Ongole Signature: Aryan Abhinav Vadela"
+  },
+  {
+    "chunk_id": 14,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": "YALAGALA NAGA BHUSHANAM Phone: 8125495618 | Email: nagabhushanamyalagala@gmail.com CAREER OBJECTIVE Motivated and enthusiastic B.Tech 3rd-year student seeking an entry-level internship or career opportunity to apply programming, database, and problem-solving skills. Eager to learn new technologies, contribute to real-world projects, and grow as a software professional. EDUCATION Qualification Institution / Board Status / Score B.Tech – Computer Science / Engineering QIS College of Engineering"
+  },
+  {
+    "chunk_id": 15,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": "nstitution / Board Status / Score B.Tech – Computer Science / Engineering QIS College of Engineering and Technology, Ongole 3rd Year Intermediate (12th) Board / Institution 90%+ TECHNICAL SKILLS Programming Languages: C, Java, Python, Ruby, JavaScript Database: SQL Web Technologies: HTML, CSS Core Skills: Problem Solving, Object-Oriented Programming, Basic Data Structures STRENGTHS • Quick learner with a positive attitude • Good problem-solving and logical thinking ability • Interested in"
+  },
+  {
+    "chunk_id": 16,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": "learner with a positive attitude • Good problem-solving and logical thinking ability • Interested in learning new technologies • Teamwork and communication skills AREAS OF INTEREST Software Development, Programming, Database Management, Web Development, and Emerging Technologies. PERSONAL DETAILS College: QIS College of Engineering and Technology Place: Ongole Name: Yalagala Naga Bhushanam Phone: 8125495618 Email: nagabhushanamyalagala@gmail.com Current Education: B.Tech – 3rd Year DECLARATION"
+  },
+  {
+    "chunk_id": 17,
+    "document": "Yalagala_Naga_Bhushanam_Resume(1).pdf",
+    "page": 1,
+    "text": ": 8125495618 Email: nagabhushanamyalagala@gmail.com Current Education: B.Tech – 3rd Year DECLARATION I hereby declare that the information provided above is true and correct to the best of my knowledge."
+  }
+]

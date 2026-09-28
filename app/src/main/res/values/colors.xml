@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- White + Violet Theme -->
+    <color name="violet_primary">#6A1B9A</color>
+    <color name="violet_primary_dark">#4A148C</color>
+    <color name="violet_accent">#8E24AA</color>
+    <color name="violet_light">#AB47BC</color>
+    <color name="violet_soft_bg">#F5F0FB</color>
+    <color name="violet_card_bg">#FFFFFF</color>
+    <color name="violet_stroke">#E1D5E7</color>
+    <color name="violet_text_dark">#2A1847</color>
+    <color name="violet_text_secondary">#695982</color>
+    <color name="violet_highlight">#EDE7F6</color>
+    <color name="score_badge_bg">#F3E5F5</color>
+    <color name="success_green">#2E7D32</color>
+    <color name="success_green_bg">#E8F5E9</color>
+    <color name="error_red">#C62828</color>
+    <color name="error_red_bg">#FFEBEE</color>
+</resources>
